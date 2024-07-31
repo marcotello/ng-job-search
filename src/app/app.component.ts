@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  private http = inject(HttpClient);
+
   title = 'ng-job-search';
+
+  ngOnInit(): void {
+    this.http.get('/jobs').subscribe(data => {
+      console.log(data);
+    });
+  }
 }
