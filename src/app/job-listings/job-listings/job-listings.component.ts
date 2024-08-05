@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject, Signal} from '@angular/core';
 import {JobListingComponent} from "../job-listing/job-listing.component";
+import {Job} from "../../models/job.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-job-listings',
@@ -12,4 +14,5 @@ import {JobListingComponent} from "../job-listing/job-listing.component";
 })
 export class JobListingsComponent {
 
+  protected jobsSignal: Signal<Job[]> = inject(ActivatedRoute).snapshot.data['jobs'];
 }

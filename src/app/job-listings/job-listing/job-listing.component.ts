@@ -13,5 +13,4 @@ export class JobListingComponent {
   title = input.required<string>();
   companyName = input.required<string>();
   reference = input.required<string>();
-
 }
