@@ -14,4 +14,5 @@ import {Job} from "../models/job.model";
 export class JobListingsComponent {
 
   jobs = input.required<Job[]>();
+  noJobsMessage = input.required<string>();
 }

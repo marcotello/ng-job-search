@@ -1,3 +1,11 @@
 .job-listings-container {
   width: 1000px;
+
+  .error-message {
+    padding-top: 100px;
+
+    h3 {
+      color: #666666;
+    }
+  }
 }

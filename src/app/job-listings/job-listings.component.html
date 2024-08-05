@@ -1,10 +1,16 @@
 <div class="job-listings-container">
-  @for (job of jobs(); track job.id) {
-    <app-job-listing [title]="job.title"
-                     [companyName]="job.companyName"
-                     [imageURL]="job.companyLogo"
-                     [reference]="job.reference"
-    ></app-job-listing>
+  @if (!jobs() || jobs().length === 0) {
+    <div class="error-message">
+      <h3>{{noJobsMessage()}}</h3>
+    </div>
+  } @else {
+    @for (job of jobs(); track job.id) {
+      <app-job-listing [title]="job.title"
+                       [companyName]="job.companyName"
+                       [imageURL]="job.companyLogo"
+                       [reference]="job.reference"
+      ></app-job-listing>
+    }
   }
 </div>
 
