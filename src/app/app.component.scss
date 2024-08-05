@@ -1,31 +1,10 @@
 .app-container {
   text-align: center;
 
-  .header {
-    text-align: center;
-    border-bottom: none;
-    margin-bottom: 10px;
-  }
-
-  .menu {
+  .body-container {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .menu-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 800px;
-
-      .menu-button {
-        width: 50%;
-        height: 40px;
-        text-align: center;
-        cursor: pointer;
-        border-bottom: 2px solid transparent;
-        border: solid blue 1px;
-      }
-    }
+    padding-top: 20px;
   }
 }

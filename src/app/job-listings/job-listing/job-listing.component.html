@@ -1,0 +1,21 @@
+<div class="job-listing">
+  <div class="listing-logo">
+    <img [src]="imageURL()" alt="{{companyName()}}">
+  </div>
+  <div class="listing-info">
+    <div class="listing-title">
+      <h3>{{title()}}</h3>
+    </div>
+    <div class="listing-details">
+      <div class="listing-company-name">
+        Company: {{companyName()}}
+      </div>
+      <div class="listing-reference">
+        Reference: {{reference()}}
+      </div>
+    </div>
+  </div>
+  <div class="listing-actions">
+    <span class="icon-star"></span>
+  </div>
+</div>
