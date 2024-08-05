@@ -1,5 +1,5 @@
 <div class="job-listings-container">
-  @for (job of jobsSignal(); track job.id) {
+  @for (job of jobs(); track job.id) {
     <app-job-listing [title]="job.title"
                      [companyName]="job.companyName"
                      [imageURL]="job.companyLogo"
