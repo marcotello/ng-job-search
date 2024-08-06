@@ -1,11 +1,13 @@
 import {Component, input} from '@angular/core';
 import {ToggleFavoriteDirective} from "../directives/toggle-favorite.directive";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-job-listing',
   standalone: true,
   imports: [
-    ToggleFavoriteDirective
+    ToggleFavoriteDirective,
+    NgIf
   ],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.scss'
@@ -17,4 +19,5 @@ export class JobListingComponent {
   title = input.required<string>();
   companyName = input.required<string>();
   reference = input.required<string>();
+  showStar = input.required<boolean>();
 }

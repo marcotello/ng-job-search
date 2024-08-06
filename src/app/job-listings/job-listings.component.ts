@@ -15,4 +15,5 @@ export class JobListingsComponent {
 
   jobs = input.required<Job[]>();
   noJobsMessage = input.required<string>();
+  showStar = input<boolean>(true);
 }

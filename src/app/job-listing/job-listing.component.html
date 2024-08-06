@@ -16,6 +16,8 @@
     </div>
   </div>
   <div class="listing-actions">
-    <span class="icon-star" [appToggleFavorite]="jobId()"></span>
+    <ng-container *ngIf="showStar()">
+      <span class="icon-star" [appToggleFavorite]="jobId()"></span>
+    </ng-container>
   </div>
 </div>
