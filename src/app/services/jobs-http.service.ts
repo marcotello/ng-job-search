@@ -9,16 +9,15 @@ import {JobDetails} from "../models/job-details.model";
 })
 export class JobsHttpService {
 
-  private BASE_URL = 'http://localhost:4200';
-  private GET_JOBS = this.BASE_URL + '/jobs';
+  private GET_JOBS_URL = '/jobs';
 
   private http = inject(HttpClient);
 
   public getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(this.GET_JOBS);
+    return this.http.get<Job[]>(this.GET_JOBS_URL);
   }
 
   public getJobById(jobId: number): Observable<JobDetails> {
-    return this.http.get<JobDetails>(`${this.GET_JOBS}/${jobId}`);
+    return this.http.get<JobDetails>(`${this.GET_JOBS_URL}/${jobId}`);
   }
 }
