@@ -1,8 +1,9 @@
-import {effect, inject, Injectable, signal} from '@angular/core';
+import {effect, inject, Injectable, Signal, signal} from '@angular/core';
 import {LocalStorageService} from "./local-storage.service";
-import {Job} from "../models/job.model";
-import {JobsHttpService} from "./jobs-http.service";
 import {JobId, JobIds} from "../types/types";
+import {JobsService} from "./jobs.service";
+import {forkJoin} from "rxjs";
+import {Job} from "../models/job.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,25 +11,40 @@ import {JobId, JobIds} from "../types/types";
 export class FavoritesService {
 
   private localStorageService = inject(LocalStorageService);
-  private jobsHttpService = inject(JobsHttpService);
+  private jobsService = inject(JobsService);
 
-  private favoritesSignal = signal<JobIds>(this.localStorageService.get());
+  private favoriteJobIdsSignal = signal<JobIds>(this.localStorageService.get());
+  private favoriteJobsSignal = signal<Job[]>([]);
 
-  favorites = this.favoritesSignal.asReadonly();
+  favoriteJobIds = this.favoriteJobIdsSignal.asReadonly();
 
   constructor() {
     effect(() => {
-      this.localStorageService.set(this.favoritesSignal());
+      this.localStorageService.set(this.favoriteJobIdsSignal());
     });
   }
 
   toggleFavorite(id: JobId): void {
-    const index = this.favoritesSignal().indexOf(id);
+    const index = this.favoriteJobIdsSignal().indexOf(id);
 
     if (index !== -1) {
-      this.favoritesSignal.update((favorites) => favorites.filter((favorite) => favorite !== id));
+      this.favoriteJobIdsSignal.update((favorites) =>favorites.filter((favorite) => favorite !== id));
     } else {
-      this.favoritesSignal.update((favorites) => [...favorites, id]);
+      this.favoriteJobIdsSignal.update((favorites) => [...favorites, id]);
     }
+  }
+
+  getFavoriteJobs(): Signal<Job[]> {
+    const favoriteJobIds = this.favoriteJobIdsSignal();
+
+    const favoriteJobDetails$ =
+      favoriteJobIds.map(jobId => this.jobsService.getJobByIdObservable(jobId));
+
+    forkJoin(favoriteJobDetails$)
+      .subscribe(jobs => {
+        console.log(jobs)
+      });
+
+    return this.favoriteJobsSignal.asReadonly();
   }
 }

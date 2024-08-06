@@ -9,11 +9,15 @@ import {Observable} from "rxjs";
 export class JobsHttpService {
 
   private BASE_URL = 'http://localhost:4200';
-  private GET_ALL_JOBS = this.BASE_URL + '/jobs';
+  private GET_JOBS = this.BASE_URL + '/jobs';
 
   private http = inject(HttpClient);
 
-  public getJobsFromAPI(): Observable<Job[]> {
-    return this.http.get<Job[]>(this.GET_ALL_JOBS);
+  public getJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(this.GET_JOBS);
+  }
+
+  public getJobById(jobId: number): Observable<Job> {
+    return this.http.get<Job>(`${this.GET_JOBS}/${jobId}`);
   }
 }

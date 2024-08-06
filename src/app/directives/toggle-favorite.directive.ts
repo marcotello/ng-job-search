@@ -25,6 +25,6 @@ export class ToggleFavoriteDirective implements OnInit  {
 
   private toggleStyle(): void {
     this.el.nativeElement.style.backgroundColor =
-      this.favoritesService.favorites().includes(this.jobId) ? 'yellow' : 'grey';
+      this.favoritesService.favoriteJobIds().includes(this.jobId) ? 'yellow' : 'grey';
   }
 }

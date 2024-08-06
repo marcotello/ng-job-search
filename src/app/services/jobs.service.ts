@@ -1,6 +1,7 @@
 import {inject, Injectable, Signal, signal} from '@angular/core';
 import {Job} from "../models/job.model";
 import {JobsHttpService} from "./jobs-http.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,15 @@ export class JobsService {
   private jobsSignal = signal<Job[]>([]);
 
   public getJobs(): Signal<Job[]> {
-    this.jobsHttpService.getJobsFromAPI()
+    this.jobsHttpService.getJobs()
       .subscribe(data => {
         this.jobsSignal.set(data);
       });
 
     return this.jobsSignal.asReadonly();
+  }
+
+  public getJobByIdObservable(jobId: number): Observable<Job> {
+    return this.jobsHttpService.getJobById(jobId);
   }
 }
