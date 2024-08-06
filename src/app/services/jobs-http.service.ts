@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Job} from "../models/job.model";
 import {Observable} from "rxjs";
+import {JobDetails} from "../models/job-details.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class JobsHttpService {
     return this.http.get<Job[]>(this.GET_JOBS);
   }
 
-  public getJobById(jobId: number): Observable<Job> {
-    return this.http.get<Job>(`${this.GET_JOBS}/${jobId}`);
+  public getJobById(jobId: number): Observable<JobDetails> {
+    return this.http.get<JobDetails>(`${this.GET_JOBS}/${jobId}`);
   }
 }

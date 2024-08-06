@@ -2,6 +2,7 @@ import {inject, Injectable, Signal, signal} from '@angular/core';
 import {Job} from "../models/job.model";
 import {JobsHttpService} from "./jobs-http.service";
 import {Observable} from "rxjs";
+import {JobDetails} from "../models/job-details.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class JobsService {
     return this.jobsSignal.asReadonly();
   }
 
-  public getJobByIdObservable(jobId: number): Observable<Job> {
+  public getJobByIdObservable(jobId: number): Observable<JobDetails> {
     return this.jobsHttpService.getJobById(jobId);
   }
 }

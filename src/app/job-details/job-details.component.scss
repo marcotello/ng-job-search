@@ -40,9 +40,16 @@
   }
 
   .job-details-body {
-    margin-top: 20px;
+    margin: 20px 0 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    .job-description {
+
+      div {
+        text-align: left;
+      }
+    }
   }
 }

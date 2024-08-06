@@ -1,13 +1,15 @@
 import {Component, input} from '@angular/core';
 import {ToggleFavoriteDirective} from "../directives/toggle-favorite.directive";
 import {NgIf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-job-listing',
   standalone: true,
   imports: [
     ToggleFavoriteDirective,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.scss'
