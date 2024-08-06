@@ -14,11 +14,6 @@ import {FavoritesService} from "../services/favorites.service";
 })
 export class FavoritesComponent {
 
-  private favoritesService = inject(FavoritesService);
+  protected favoritesSignal = inject(FavoritesService).getFavoriteJobs();
 
-  protected favoritesSignal: Signal<Job[]>;
-
-  constructor() {
-    this.favoritesSignal = this.favoritesService.getFavoriteJobs()
-  }
 }

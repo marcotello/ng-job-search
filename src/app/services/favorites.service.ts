@@ -29,6 +29,7 @@ export class FavoritesService {
 
     if (index !== -1) {
       this.favoriteJobIdsSignal.update((favorites) =>favorites.filter((favorite) => favorite !== id));
+      this.favoriteJobsSignal.update((favorites) =>favorites.filter((favorite) => favorite.id !== id));
     } else {
       this.favoriteJobIdsSignal.update((favorites) => [...favorites, id]);
     }
