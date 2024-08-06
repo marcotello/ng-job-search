@@ -5,7 +5,8 @@
     </div>
   } @else {
     @for (job of jobs(); track job.id) {
-      <app-job-listing [title]="job.title"
+      <app-job-listing [jobId]="job.id"
+                       [title]="job.title"
                        [companyName]="job.companyName"
                        [imageURL]="job.companyLogo"
                        [reference]="job.reference"
