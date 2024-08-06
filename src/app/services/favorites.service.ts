@@ -42,7 +42,7 @@ export class FavoritesService {
 
     forkJoin(favoriteJobDetails$)
       .subscribe(jobs => {
-        console.log(jobs)
+        this.favoriteJobsSignal.set(jobs);
       });
 
     return this.favoriteJobsSignal.asReadonly();
