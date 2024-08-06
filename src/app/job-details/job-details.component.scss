@@ -1,0 +1,41 @@
+.job-details {
+  width: 1000px;
+
+  .back-button {
+    text-align: left;
+  }
+
+  .job-details-header {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+
+    .job-details-logo {
+      flex: 0 0 130px;
+      margin-right: 20px;
+    }
+
+    .job-details-info {
+      flex: 1;
+      text-align: left;
+
+      .job-details-title {
+        margin-bottom: 5px;
+      }
+
+      .job-details-industry {
+        color: #666666;
+        display: flex;
+        gap: 20px;
+        padding-left: 10px;
+
+        .details-industry-item {
+          color: white;
+          background-color: #5d80ae;
+          padding: 1px 10px;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}
