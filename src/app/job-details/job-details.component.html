@@ -13,8 +13,7 @@
         </div>
         <div class="job-details-industry">
           @for (category of jobCategories; track jobCategories) {
-            <div class="details-industry-item">
-              {{category}}
+            <div class="details-industry-item" [innerHTML]="category">
             </div>
           }
         </div>
