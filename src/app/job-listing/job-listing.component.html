@@ -1,12 +1,12 @@
 <div class="job-listing">
   <div class="listing-logo">
-    <a [routerLink]="['/job-details', jobId()]">
+    <a [routerLink]="['/jobs', jobId()]">
       <img [src]="imageURL()" alt="{{companyName()}}">
     </a>
   </div>
   <div class="listing-info">
     <div class="listing-title">
-      <a [routerLink]="['/job-details', jobId()]">
+      <a [routerLink]="['/jobs', jobId()]">
         <h3>{{title()}}</h3>
       </a>
     </div>

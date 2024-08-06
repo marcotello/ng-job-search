@@ -4,7 +4,7 @@ import {fetchAllJobsResolver} from "./resolvers/fetch-all-jobs.resolver";
 export const routes: Routes = [
   { path: '', redirectTo: '/job-listings', pathMatch: 'full' },
   {
-    path: 'job-listings', loadComponent: () => import('./jobs/jobs.component')
+    path: 'jobs', loadComponent: () => import('./jobs/jobs.component')
       .then(c => c.JobsComponent),
     resolve: { jobs: fetchAllJobsResolver}
   },
@@ -13,7 +13,7 @@ export const routes: Routes = [
       .then(c => c.FavoritesComponent)
   },
   {
-    path: 'job-details/:jobId',
+    path: 'jobs/:jobId',
     loadComponent: () => import('./job-details/job-details.component')
       .then(c => c.JobDetailsComponent)
   },
