@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from "./header/header.component";
-import {MenuComponent} from "./top-menu/menu/menu.component";
+import {MenuComponent} from "./menu/menu.component";
 
 @Component({
   selector: 'app-root',
