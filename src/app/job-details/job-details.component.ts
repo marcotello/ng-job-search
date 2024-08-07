@@ -23,13 +23,18 @@ export class JobDetailsComponent {
 
   @Input()
   set jobId(jobId: string) {
-    console.log(jobId);
-    this.jobDetails$ = this.jobsService.getJobByIdObservable(+jobId)
-      .pipe(
-        tap(jobDetails => {
-          this.jobCategories =  [...jobDetails.types, ...jobDetails.industries];
-        })
-      );
+    const jobIdNumber = +jobId;
+
+    if (!isNaN(jobIdNumber)) {
+      this.jobDetails$ = this.jobsService.getJobByIdObservable(jobIdNumber)
+        .pipe(
+          tap(jobDetails => {
+            this.jobCategories =  [...jobDetails.types, ...jobDetails.industries];
+          })
+        );
+    } else {
+      this.jobDetails$ = undefined;
+    }
   }
 
   goBack() {
