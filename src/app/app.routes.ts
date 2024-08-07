@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import {fetchAllJobsResolver} from "./resolvers/fetch-all-jobs.resolver";
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/job-listings', pathMatch: 'full' },
+  { path: '', redirectTo: '/jobs', pathMatch: 'full' },
   {
     path: 'jobs', loadComponent: () => import('./jobs/jobs.component')
       .then(c => c.JobsComponent),
@@ -17,5 +17,5 @@ export const routes: Routes = [
     loadComponent: () => import('./job-details/job-details.component')
       .then(c => c.JobDetailsComponent)
   },
-  { path: '**', redirectTo: '/job-listings', pathMatch: 'full' }
+  { path: '**', redirectTo: '/jobs', pathMatch: 'full' }
 ];
